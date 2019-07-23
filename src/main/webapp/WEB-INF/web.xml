@@ -12,7 +12,7 @@
 
 	<servlet>
 	   <servlet-name>KasvikosteusServlet</servlet-name>
-	   <servlet-class>src.KasvikosteusServlet</servlet-class>
+	   <servlet-class>webapp.KasvikosteusServlet</servlet-class>
 	</servlet>
 	 
 	<!-- Defines the path to access this Servlet -->

@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.heroku.sample</groupId>
-  <artifactId>webappRunnerSample</artifactId>
+  <groupId>Kasvikosteus</groupId>
+  <artifactId>Kasvikosteus</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>webappRunnerSample Maven Webapp</name>
+  <name>Kasvikosteus</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
@@ -23,7 +23,7 @@
 	</dependency>
   </dependencies>
   <build>
-    <finalName>webappRunnerSample</finalName>
+    <finalName>Kasvikosteus</finalName>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -36,10 +36,10 @@
                     <configuration>
                         <artifactItems>
                             <artifactItem>
-                                <groupId>com.github.jsimone</groupId>
-                                <artifactId>webapp-runner</artifactId>
+                                <groupId>Kasvikosteus</groupId>
+                                <artifactId>Kasvikosteus</artifactId>
                                 <version>9.0.20.0</version>
-                                <destFileName>webapp-runner.jar</destFileName>
+                                <destFileName>kasvikosteus.jar</destFileName>
                             </artifactItem>
                         </artifactItems>
                     </configuration>

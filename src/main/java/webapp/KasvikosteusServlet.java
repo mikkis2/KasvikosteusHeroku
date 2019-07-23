@@ -1,0 +1,119 @@
+package webapp;
+
+import java.io.BufferedReader;
+import webapp.Analyzer;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ 
+public class KasvikosteusServlet extends HttpServlet {
+    
+   private static final long serialVersionUID = 1L;
+ 
+    
+   public KasvikosteusServlet() {
+   }
+ 
+   @Override
+   protected void doGet(HttpServletRequest req,
+           HttpServletResponse resp) throws ServletException, IOException {
+        
+       String humidity = getHumidity();
+       Analyzer analyzer = new Analyzer();
+       String analysis = analyzer.analyze(humidity);
+       
+       req.setAttribute("kosteus", humidity);
+       req.setAttribute("analysis", analysis);
+       
+       RequestDispatcher view = req.getRequestDispatcher("result.jsp");
+       view.forward(req, resp);
+   }
+   
+   @Override
+   protected void doPost(HttpServletRequest request,
+           HttpServletResponse response) throws ServletException, IOException {
+       this.doGet(request, response);
+   }
+   
+   
+   public String getHumidity()
+   {
+     String last_value = "0";
+     try
+     {
+       String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/retain";
+       String results = doHttpUrlConnectionAction(myUrl);
+       results = results.trim();
+       String[] splits = results.split(",");
+       last_value = splits[0];
+     }
+     catch (Exception e)
+     {
+       // deal with the exception in your "controller"
+     }
+     return last_value;
+   }
+
+   private String doHttpUrlConnectionAction(String desiredUrl)
+   throws Exception
+   {
+     URL url = null;
+     BufferedReader reader = null;
+     StringBuilder stringBuilder;
+
+     try
+     {
+       // create the HttpURLConnection
+       url = new URL(desiredUrl);
+       HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+       //HTTP GET with specified Adafruit key
+       connection.setRequestMethod("GET");
+       connection.setRequestProperty("X-AIO-Key", "a73b7ea21eac48bf82a35c1b656e07eb");
+
+       // give it 15 seconds to respond
+       connection.setReadTimeout(15*1000);
+       connection.connect();
+
+       // read the output from the server
+       reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+       stringBuilder = new StringBuilder();
+
+       String line = null;
+       while ((line = reader.readLine()) != null)
+       {
+         stringBuilder.append(line + "\n");
+       }
+       return stringBuilder.toString();
+     }
+     catch (Exception e)
+     {
+       e.printStackTrace();
+       throw e;
+     }
+     finally
+     {
+       // close the reader; this can throw an exception too, so
+       // wrap it in another try/catch block.
+       if (reader != null)
+       {
+         try
+         {
+           reader.close();
+         }
+         catch (IOException ioe)
+         {
+           ioe.printStackTrace();
+         }
+       }
+     }
+   }
+}

@@ -22,7 +22,7 @@ p {text-align:center;}
 	%>
 	
 	<br><br>
-	<div align="center"><form method="post" action="/kasvikosteus" >
+	<div align="center"><form method="post" action="" >
 	<input type="submit" value="Palaa alkuun">
 	</form></div>
 </body>

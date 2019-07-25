@@ -32,8 +32,8 @@ p {text-align:center;}
 	<p>
 	<%
 	out.println("<br><br>");
-	out.print("Updated on " + created_at_date + " at " + created_at_time + "GMT +0" + "<br>");
-	out.println(raw);
+	out.print("Updated on " + created_at_date + " at " + created_at_time + "<br>");
+	//out.println(raw);
 	
 	%>
 </body>

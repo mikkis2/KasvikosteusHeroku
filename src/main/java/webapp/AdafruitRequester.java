@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import org.json.*;
+import java.util.ArrayList;
 
 public class AdafruitRequester {
 	
@@ -20,6 +21,9 @@ public String getLastData()
        last_value = json.getString("value");
        
        String date = json.getString("created_at");
+       
+       //ArrayList<String> data = new ArrayList<>();
+       
      }
      catch (Exception e)
      {

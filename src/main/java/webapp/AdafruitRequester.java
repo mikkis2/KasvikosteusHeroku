@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.*;
+import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class AdafruitRequester {

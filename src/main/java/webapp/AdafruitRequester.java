@@ -19,7 +19,8 @@ public String getLastData()
        String results = doHttpUrlConnectionAction(myUrl);
        
        JSONObject obj = new JSONObject(results);
-       
+       last_value = obj.getString("value");
+       String created_at = obj.getString("created_at");
        
        //ArrayList<String> data = new ArrayList<>();
        

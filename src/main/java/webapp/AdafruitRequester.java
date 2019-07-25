@@ -30,7 +30,9 @@ public ArrayList<String> getLastData()
        String date_splits[] = created_at_date.split("-");
        String time_splits[] = created_at_time.split(":");
        String date = date_splits[2] + "." + date_splits[1] + "." + date_splits[0];
-       String time = time_splits[0] + "." + time_splits[1];
+       int hours = Integer.valueOf(time_splits[0]);
+       hours = hours + 3;
+       String time = String.valueOf(hours) + "." + time_splits[1];
        
        data.add(last_value);
        data.add(date);

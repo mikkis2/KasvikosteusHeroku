@@ -21,16 +21,20 @@ public ArrayList<String> getLastData()
        
        JSONObject obj = new JSONObject(results);
        last_value = obj.getString("value");
-       String date = obj.getString("created_at");
+       String created_at = obj.getString("created_at");
        
-       //String created_at_date = created_at.substring(0,10);
-       //String created_at_time = created_at.substring(11, 20);
+       String created_at_date = created_at.substring(0,10);
+       String created_at_time = created_at.substring(11, 18);
        
-       //String splits[] = created_at_date.split("-");
-       //String date = splits[2] + "." + splits[1] + "." + splits[0];
+       
+       String date_splits[] = created_at_date.split("-");
+       String time_splits[] = created_at_time.split(":");
+       String date = date_splits[2] + "." + date_splits[1] + "." + date_splits[0];
+       String time = time_splits[0] + "." + time_splits[1];
        
        data.add(last_value);
        data.add(date);
+       data.add(time);
      }
      catch (Exception e)
      {

@@ -27,14 +27,16 @@ public class KasvikosteusServlet extends HttpServlet {
 	   ArrayList<String> data = adafruitRequester.getLastData();
        
 	   String humidity = data.get(0);
-	   String created_at = data.get(1);
+	   String created_at_date = data.get(1);
+	   String created_at_time = data.get(2);
 	   
        Analyzer analyzer = new Analyzer();
        String analysis = analyzer.analyze(humidity);
        
        req.setAttribute("kosteus", humidity);
        req.setAttribute("analysis", analysis);
-       req.setAttribute("created_at", created_at);
+       req.setAttribute("created_at_date", created_at_date);
+       req.setAttribute("created_at_time", created_at_time);
        
        RequestDispatcher view = req.getRequestDispatcher("result.jsp");
        view.forward(req, resp);

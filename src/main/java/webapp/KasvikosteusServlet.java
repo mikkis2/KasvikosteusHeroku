@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
  
 public class KasvikosteusServlet extends HttpServlet {
     
@@ -23,13 +24,17 @@ public class KasvikosteusServlet extends HttpServlet {
            HttpServletResponse resp) throws ServletException, IOException {
        
 	   AdafruitRequester adafruitRequester = new AdafruitRequester();
-	   String humidity = adafruitRequester.getLastData();
+	   ArrayList<String> data = adafruitRequester.getLastData();
        
+	   String humidity = data.get(0);
+	   String created_at = data.get(1);
+	   
        Analyzer analyzer = new Analyzer();
        String analysis = analyzer.analyze(humidity);
        
        req.setAttribute("kosteus", humidity);
        req.setAttribute("analysis", analysis);
+       req.setAttribute("created_at", created_at);
        
        RequestDispatcher view = req.getRequestDispatcher("result.jsp");
        view.forward(req, resp);

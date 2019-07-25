@@ -17,8 +17,10 @@ p {text-align:center;}
 	<%
 	String tulos = (String) request.getAttribute("kosteus");
 	String analysis = (String) request.getAttribute("analysis");
+	String created_at = (String) request.getAttribute("created_at");
 	out.println("Kasvisi kosteus on tällä hetkellä " + tulos + "%" +  "<br><br>");
-	out.println(analysis);
+	out.println(analysis + "<br><br><br><br>");
+	out.println("Updated at:" + created_at);
 	%>
 	
 	<br><br>

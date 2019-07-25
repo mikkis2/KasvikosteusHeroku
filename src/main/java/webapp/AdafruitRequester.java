@@ -10,9 +10,10 @@ import java.util.ArrayList;
 
 public class AdafruitRequester {
 	
-public String getLastData()
+public ArrayList<String> getLastData()
    {
      String last_value = "0";
+     ArrayList<String> data = new ArrayList<String>();
      try
      {
        String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/last";
@@ -22,14 +23,14 @@ public String getLastData()
        last_value = obj.getString("value");
        String created_at = obj.getString("created_at");
        
-       //ArrayList<String> data = new ArrayList<>();
-       
+       data.add(last_value);
+       data.add(created_at);
      }
      catch (Exception e)
      {
        // deal with the exception in your "controller"
      }
-     return last_value;
+     return data;
    }
 
 

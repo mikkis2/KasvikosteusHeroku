@@ -16,7 +16,7 @@ public String getLastData()
        String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/last";
        String results = doHttpUrlConnectionAction(myUrl);
        results = results.trim();
-       String[] splits = results.split(";");
+       String[] splits = results.split(",");
        
        String last_value_section = splits[2];
        String [] last_value_splits = last_value_section.split(":");

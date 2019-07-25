@@ -19,7 +19,10 @@ p {text-align:center;}
 	String analysis = (String) request.getAttribute("analysis");
 	String created_at_date = (String) request.getAttribute("created_at_date");
 	String created_at_time = (String) request.getAttribute("created_at_time");
+	String raw = (String) request.getAttribute("raw");
+	
 	out.println("Kasvisi kosteus on tällä hetkellä " + tulos + "%" +  "<br><br>");
+	out.println(analysis);
 	%>
 	
 	<br><br>
@@ -28,8 +31,9 @@ p {text-align:center;}
 	</form></div>
 	<p>
 	<%
-	out.println(analysis + "<br><br>");
-	out.print("Updated on " + created_at_date + " at " + created_at_time);
+	out.println("<br><br>");
+	out.print("Updated on " + created_at_date + " at " + created_at_time + "<br>");
+	out.println(raw);
 	
 	%>
 </body>

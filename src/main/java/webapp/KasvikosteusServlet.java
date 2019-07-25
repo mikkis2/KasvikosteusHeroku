@@ -29,6 +29,7 @@ public class KasvikosteusServlet extends HttpServlet {
 	   String humidity = data.get(0);
 	   String created_at_date = data.get(1);
 	   String created_at_time = data.get(2);
+	   String raw = data.get(3);
 	   
        Analyzer analyzer = new Analyzer();
        String analysis = analyzer.analyze(humidity);
@@ -37,6 +38,7 @@ public class KasvikosteusServlet extends HttpServlet {
        req.setAttribute("analysis", analysis);
        req.setAttribute("created_at_date", created_at_date);
        req.setAttribute("created_at_time", created_at_time);
+       req.setAttribute("raw", raw);
        
        RequestDispatcher view = req.getRequestDispatcher("result.jsp");
        view.forward(req, resp);

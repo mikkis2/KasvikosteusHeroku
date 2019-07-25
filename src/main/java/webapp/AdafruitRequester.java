@@ -35,6 +35,7 @@ public ArrayList<String> getLastData()
        data.add(last_value);
        data.add(date);
        data.add(time);
+       data.add(created_at);
      }
      catch (Exception e)
      {

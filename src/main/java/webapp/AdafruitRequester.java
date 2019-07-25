@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import org.json.*;
 
 public class AdafruitRequester {
 	
@@ -15,16 +16,10 @@ public String getLastData()
      {
        String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/last";
        String results = doHttpUrlConnectionAction(myUrl);
-       results = results.trim();
-       String[] splits = results.split(",");
+       JSONObject json = new JSONObject(results);
+       last_value = json.getString("value");
        
-       String last_value_section = splits[2];
-       String [] last_value_splits = last_value_section.split(":");
-       last_value = last_value_splits[1];
-       
-       String date_section = splits[4];
-       String [] date_splits = date_section.split(":");
-       String date = date_splits[1];
+       String date = json.getString("created_at");
      }
      catch (Exception e)
      {

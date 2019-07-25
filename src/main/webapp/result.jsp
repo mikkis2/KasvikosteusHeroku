@@ -20,12 +20,14 @@ p {text-align:center;}
 	String created_at = (String) request.getAttribute("created_at");
 	out.println("Kasvisi kosteus on tällä hetkellä " + tulos + "%" +  "<br><br>");
 	out.println(analysis + "<br><br><br><br>");
-	out.println("Updated at:" + created_at);
 	%>
 	
 	<br><br>
 	<div align="center"><form method="post" action="/" >
 	<input type="submit" value="Palaa alkuun">
 	</form></div>
+	<%
+	out.println("Updated at:" + created_at);
+	%>
 </body>
 </html>

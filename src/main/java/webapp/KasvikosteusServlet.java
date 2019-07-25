@@ -23,8 +23,8 @@ public class KasvikosteusServlet extends HttpServlet {
            HttpServletResponse resp) throws ServletException, IOException {
        
 	   AdafruitRequester adafruitRequester = new AdafruitRequester();
-	   
-       String humidity = adafruitRequester.getHumidity();
+	   String humidity = adafruitRequester.getLastData();
+       
        Analyzer analyzer = new Analyzer();
        String analysis = analyzer.analyze(humidity);
        

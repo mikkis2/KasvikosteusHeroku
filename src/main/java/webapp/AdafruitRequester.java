@@ -8,16 +8,16 @@ import java.net.URL;
 
 public class AdafruitRequester {
 	
-public String getHumidity()
+public String getLastData()
    {
      String last_value = "0";
      try
      {
-       String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/retain";
-       String results = doHttpUrlConnectionAction(myUrl);
-       results = results.trim();
-       String[] splits = results.split(",");
-       last_value = splits[0];
+       String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/last";
+       last_value = doHttpUrlConnectionAction(myUrl);
+       //results = results.trim();
+       //String[] splits = results.split(",");
+       //last_value = splits[0];
      }
      catch (Exception e)
      {
@@ -26,7 +26,8 @@ public String getHumidity()
      return last_value;
    }
 
-   private String doHttpUrlConnectionAction(String desiredUrl)
+
+private String doHttpUrlConnectionAction(String desiredUrl)
    throws Exception
    {
      URL url = null;

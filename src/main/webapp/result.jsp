@@ -26,6 +26,7 @@ p {text-align:center;}
 	<div align="center"><form method="post" action="/" >
 	<input type="submit" value="Palaa alkuun">
 	</form></div>
+	<p>
 	<%
 	out.println("Updated at:" + created_at);
 	%>

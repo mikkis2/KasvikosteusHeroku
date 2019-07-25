@@ -23,7 +23,7 @@ public ArrayList<String> getLastData()
        last_value = obj.getString("value");
        String created_at = obj.getString("created_at");
        
-       String created_at_date = created_at.substring(0,9);
+       String created_at_date = created_at.substring(0,10);
        
        String splits[] = created_at_date.split("-");
        String date = splits[2] + "." + splits[1] + "." + splits[0];

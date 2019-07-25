@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.ParseException;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class AdafruitRequester {
@@ -20,16 +17,8 @@ public String getLastData()
      {
        String myUrl = "http://io.adafruit.com/api/v2/mig3linho/feeds/kasvikosteus/data/last";
        String results = doHttpUrlConnectionAction(myUrl);
-       JSONParser parser = new JSONParser();
        
-     try {
-    	 Object obj = parser.parse(results);
-    	 JSONArray array = (JSONArray) obj;
-    	 JSONObject obj2 = (JSONObject)array.get(1);
-    	 
-     }catch(ParseException pe){
-    	 
-     }
+       JSONObject obj = new JSONObject(results);
        
        
        //ArrayList<String> data = new ArrayList<>();
